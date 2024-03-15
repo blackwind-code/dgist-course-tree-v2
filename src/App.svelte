@@ -1,31 +1,43 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import svelteLogo from "./assets/svelte.svg";
+  import viteLogo from "/vite.svg";
+  import Counter from "./lib/Counter.svelte";
+  import Lecture from "./component/atomic/Lecture.svelte";
+  import ToggleButton from "./component/atomic/ToggleButton.svelte";
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+<main class="flex">
+  <div class="w-80 bg-slate-900 h-screen overflow-scroll text-slate-200">
+    <div class="flex flex-col gap-2 py-4 sticky top-0 bg-slate-900">
+      <button class="border rounded-sm py-2 mx-4">reset</button>
+      <button class="border rounded-sm py-2 mx-4">save</button>
+    </div>
+    <div class="flex flex-1 flex-col" id="leftside">
+      <div class="px-4">
+        <div class="text-lg font-bold pb-2">Essential</div>
+        <div class="flex flex-col gap-2">
+          <Lecture name={"Biology"}></Lecture>
+        </div>
+      </div>
+    </div>
   </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
+  <div class="flex flex-col gap-4 flex-1 bg-slate-100">
+    <div>Choose your Major</div>
+    <div class="grid grid-rows-2 gap-2">
+      <ToggleButton name="Computer" selected></ToggleButton>
+      <ToggleButton name="Computer" selected={false}></ToggleButton>
+    </div>
+    <div class="flex text-sm gap-4">
+      <div class="flex items-center gap-3 p-2 rounded border bg-white shadow">
+        <div class="w-4 h-4 bg-red-600 rounded-full"></div>
+        <div>Essential 3/24</div>
+      </div>
+      <div class="flex items-center gap-3 p-2 rounded border">
+        <div class="w-4 h-4 bg-red-600 rounded-full"></div>
+        <div>Essential 3/24</div>
+      </div>
+    </div>
   </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
 </main>
 
 <style>
